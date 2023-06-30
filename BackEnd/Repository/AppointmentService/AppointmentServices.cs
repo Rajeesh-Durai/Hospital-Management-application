@@ -1,8 +1,8 @@
 ﻿using BigBangProject.Data;
 using BigBangProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
-
+using Microsoft.EntityFrameworkCore;
 namespace BigBangProject.Repository.AppointmentService
 {
     public class AppointmentServices:IAppointmentServices
@@ -12,6 +12,7 @@ namespace BigBangProject.Repository.AppointmentService
         {
             _context = context;
         }
+        [Authorize(Roles ="Doctor")]
         public async Task<List<AppointmentDetails>> GetAppointmentDetails()
         {
             var appointmentInfo = await _context.Appointments.ToListAsync();
@@ -22,6 +23,7 @@ namespace BigBangProject.Repository.AppointmentService
             }
             return appointmentInfo;
         }
+        [Authorize(Roles ="User")]
         public async Task<AppointmentDetails> FillAppointmentDetails(AppointmentDetails appointment)
         {
              await _context.Appointments.AddAsync(appointment);

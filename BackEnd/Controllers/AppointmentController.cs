@@ -1,11 +1,12 @@
 ﻿using BigBangProject.Models;
 using BigBangProject.Repository.AppointmentService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BigBangProject.Controllers
 {
-    [Microsoft.AspNetCore.Mvc.Route("Appointment")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AppointmentController:ControllerBase
     {
@@ -14,7 +15,8 @@ namespace BigBangProject.Controllers
         {
             _context= context;
         }
-        [HttpGet]
+        [Authorize(Roles ="Doctor")]
+        [HttpGet("AppointmentDetail")]
         public async Task<ActionResult<List<AppointmentDetails>>> GetAppointmentDetails()
         {
             try
@@ -25,10 +27,9 @@ namespace BigBangProject.Controllers
             catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
-
             }
-
         }
+        [Authorize(Roles ="User")]
         [HttpPost("FillAppointmentDetails")]
         public async Task<ActionResult<AppointmentDetails>> FillAppointmentDetails(AppointmentDetails appointment)
         {
