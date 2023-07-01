@@ -14,22 +14,21 @@ namespace BigBangProject.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles ="User")]
-        [HttpGet("DoctorDetails")]
-        public async Task<ActionResult<List<DoctorDetails>>> GetDoctorDetails()
+        [Authorize(Roles = "Admin")]
+        [HttpGet("DoctorDetail")]
+        public async Task<ActionResult<List<DoctorDetails>>> doctorDetail()
         {
             try
             {
-                var gets = await _context.GetDoctorDetails();
-                return Ok(gets);
+                var get = await _context.doctorDetail();
+                return Ok(get);
             }
             catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
-
             }
-
         }
+
         [Authorize(Roles ="Admin")]
         [HttpPost("NewDoctorInfo")]
         public async Task<ActionResult<DoctorDetails>> NewDoctorInfo(DoctorDetails doctor)
@@ -73,6 +72,89 @@ namespace BigBangProject.Controllers
             {
                 return NotFound(ex.Message);
             }
+        }
+       
+        [Authorize(Roles = "Admin,User,Doctor")]
+      
+        [HttpGet("Cardiology")]
+        public async Task<ActionResult<List<DoctorDetails>>> cardiology()
+        {
+            try
+            {
+                var details = await _context.cardiology();
+                return Ok(details);
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+
+        }
+        [Authorize(Roles = "Admin,User,Doctor")]
+        [HttpGet("Endocrinology")]
+        public async Task<ActionResult<List<DoctorDetails>>> endocrinology()
+        {
+            try
+            {
+                var details = await _context.endocrinology();
+                return Ok(details);
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+
+        }
+        [Authorize(Roles ="Admin,User,Doctor")]
+        [HttpGet("Neurology")]
+        public async Task<ActionResult<List<DoctorDetails>>> neurology()
+        {
+            try
+            {
+                var details = await _context.neurology();
+                return Ok(details);
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+
+        }
+        [Authorize(Roles = "Admin,User,Doctor")]
+        
+        [HttpGet("Nephrology")]
+        public async Task<ActionResult<List<DoctorDetails>>> nephrology()
+        {
+            try
+            {
+                var details = await _context.nephrology();
+                return Ok(details);
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpGet("Orthopedics")]
+        public async Task<ActionResult<List<DoctorDetails>>> orthopedics()
+        {
+            try
+            {
+                var details = await _context.orthopedics();
+                return Ok(details);
+            }
+            catch (ArithmeticException ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+
         }
     }
 }

@@ -12,7 +12,6 @@ namespace BigBangProject.Repository.AppointmentService
         {
             _context = context;
         }
-        [Authorize(Roles ="Doctor")]
         public async Task<List<AppointmentDetails>> GetAppointmentDetails()
         {
             var appointmentInfo = await _context.Appointments.ToListAsync();
@@ -23,7 +22,6 @@ namespace BigBangProject.Repository.AppointmentService
             }
             return appointmentInfo;
         }
-        [Authorize(Roles ="User")]
         public async Task<AppointmentDetails> FillAppointmentDetails(AppointmentDetails appointment)
         {
              await _context.Appointments.AddAsync(appointment);

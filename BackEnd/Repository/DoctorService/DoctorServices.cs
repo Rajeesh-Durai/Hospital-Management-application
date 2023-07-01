@@ -11,9 +11,9 @@ namespace BigBangProject.Repository.DoctorService
         {
             _context = context;
         }
-        public async Task<List<DoctorDetails>> GetDoctorDetails()
+        public async Task<List<DoctorDetails>> doctorDetail()
         {
-            var doctorInfo= await _context.DoctorDetails.ToListAsync();
+            var doctorInfo = await _context.DoctorDetails.ToListAsync();
             if (doctorInfo == null)
             {
                 throw new ArgumentNullException("No info available");
@@ -21,7 +21,7 @@ namespace BigBangProject.Repository.DoctorService
             }
             return doctorInfo;
         }
-       public async Task<DoctorDetails> NewDoctorInfo(DoctorDetails doctor)
+        public async Task<DoctorDetails> NewDoctorInfo(DoctorDetails doctor)
         {
             await _context.DoctorDetails.AddAsync(doctor);
             await _context.SaveChangesAsync();
@@ -50,6 +50,31 @@ namespace BigBangProject.Repository.DoctorService
             _context.DoctorDetails.Remove(delete);
             await _context.SaveChangesAsync();
             return "Deleted Successfully";
+        }
+        public async Task<List<DoctorDetails>> cardiology()
+        {
+            var items = await _context.DoctorDetails.Where(val => val.Specialization == "Cardiology").ToListAsync();
+            return items;
+        }
+        public async Task<List<DoctorDetails>> endocrinology()
+        {
+            var items = await _context.DoctorDetails.Where(val => val.Specialization == "Endocrinology").ToListAsync();
+            return items;
+        }
+        public async Task<List<DoctorDetails>> orthopedics()
+        {
+            var items = await _context.DoctorDetails.Where(val => val.Specialization == "Orthopedics").ToListAsync();
+            return items;
+        }
+        public async Task<List<DoctorDetails>> nephrology()
+        {
+            var items = await _context.DoctorDetails.Where(val => val.Specialization == "Nephrology").ToListAsync();
+            return items;
+        }
+        public async Task<List<DoctorDetails>> neurology()
+        {
+            var items = await _context.DoctorDetails.Where(val => val.Specialization == "Neurology").ToListAsync();
+            return items;
         }
     }
 }

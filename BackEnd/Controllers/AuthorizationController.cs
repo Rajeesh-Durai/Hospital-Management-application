@@ -165,7 +165,8 @@ namespace BigBangProject.Controllers
                 UserName = model.Username,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = model.Email,
-                Name = model.Name
+                Name = model.Name,
+                Roles= model.Roles
             };
             // create a user here
             var result = await userManager.CreateAsync(user, model.Password);
@@ -178,7 +179,7 @@ namespace BigBangProject.Controllers
 
 
             //admin Registeration
-            if (user.UserName == "Admin")
+            if (user.Roles == "Admin")
             {
                 if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
