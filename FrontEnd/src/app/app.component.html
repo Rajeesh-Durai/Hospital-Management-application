@@ -1,0 +1,53 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <header>
+    <div class="sticky">
+      <div class="img">
+        <img [src]="projLogo" alt="logo" />
+      </div>
+      <input type="checkbox" id="nav-check" hidden />
+      <nav *ngIf="isLoggedIn">
+        <ul>
+          <li *ngIf="roles == 'Admin' || 'User' || 'Doctor'">
+            <p [routerLink]="['home']" routerLinkActive="active">Home</p>
+          </li>
+          <li *ngIf="roles == 'Admin' || 'User' || 'Doctor'">
+            <p [routerLink]="['ourservice']" routerLinkActive="active">
+              Our Doctors
+            </p>
+          </li>
+          <li *ngIf="roles == 'Doctor'">
+            <p [routerLink]="['experience']" routerLinkActive="active">
+              Manage
+            </p>
+          </li>
+          <li *ngIf="roles == 'Admin'">
+            <p routerLink="admin" routerLinkActive="active">Admin</p>
+          </li>
+          <li>
+            <p (click)="logout()" style="cursor: pointer">Logout</p>
+          </li>
+        </ul>
+      </nav>
+      <label for="nav-check" class="toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
+    </div>
+  </header>
+  <router-outlet (activate)="checkLoggedInUser()"></router-outlet>
+</body>

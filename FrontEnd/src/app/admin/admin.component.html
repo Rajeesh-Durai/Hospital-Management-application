@@ -1,0 +1,35 @@
+<div class="options">
+  <div class="content-1" [routerLink]="['add']">
+    <img src="../../assets/images/admin-add.jpg" alt="" />
+    <h3>Add</h3>
+  </div>
+  <div class="content-1" [routerLink]="['delete']">
+    <img src="../../assets/images/delete-admin.jpg" alt="" />
+    <h3>Delete</h3>
+  </div>
+</div>
+<div class="details">
+  <h2>Request</h2>
+  <ng-container *ngFor="let req of requestDataList">
+    <div class="content-1">
+      <img src="../../assets/images/{{ req.username }}.jpg" alt="Avatar" />
+      <h5>{{ req.username }}</h5>
+      <h5>{{ req.email }}</h5>
+      <div class="section">
+        <button class="btn btn-green" (click)="Add(req)">Accept</button>
+        <button class="btn btn-red" (click)="removeItem(req)">Decline</button>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<h2>All Doctor Details</h2>
+<div class="places">
+  <ng-container *ngFor="let doc of Doctor">
+    <div class="content-1">
+      <img src="../../assets/images/{{ doc.doctorName }}.jpg" alt="" />
+      <h3>{{ doc.doctorName }}</h3>
+      <h6>{{ doc.specialization }}</h6>
+      <h6>{{ doc.experience }} years</h6>
+    </div>
+  </ng-container>
+</div>

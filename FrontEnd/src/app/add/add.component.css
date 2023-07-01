@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  padding-top: 100px;
+  background-image: url("../../assets/images/admin-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+form {
+  width: 600px;
+  margin: 0 auto;
+}
+.form-container h2 {
+  text-align: center;
+  top: 20%;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Form input fields */
+input[type="text"],
+input[type="number"],
+#cost {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Form submit button */
+button {
+  background-color: #003329;
+  color: white;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Form submit button hover effect */
+button:hover {
+  background-color: #084904;
+}

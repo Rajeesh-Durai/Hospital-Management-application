@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width , initial scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="img">
+        <img [src]="myimg" alt="" />
+      </div>
+      <div class="login-container">
+        <form [formGroup]="frm" (ngSubmit)="onPost()">
+          <div class="img-avatar"><img [src]="myAvatar" alt="" /></div>
+          <h2>Welcome</h2>
+          <div class="input-div one focus">
+            <div class="i">
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div>
+              <input
+                type="text"
+                formControlName="username"
+                name="username"
+                class="input"
+                placeholder="Username"
+              />
+            </div>
+          </div>
+          <div
+            class="msg error"
+            *ngIf="
+              f['username'].invalid &&
+              (f['username'].dirty || f['username'].touched)
+            "
+          >
+            <span *ngIf="f['username'].errors?.['required']">
+              Username is required
+            </span>
+          </div>
+          <div class="input-div focus two">
+            <div class="i">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </div>
+            <div>
+              <input
+                type="password"
+                formControlName="password"
+                name="password"
+                class="input"
+                placeholder="Password"
+              />
+            </div>
+            <div
+              class="msg error"
+              *ngIf="
+                f['password'].invalid &&
+                (f['password'].dirty || f['password'].touched)
+              "
+            >
+              <span *ngIf="f['password'].errors?.['required']">
+                Password is required
+              </span>
+            </div>
+          </div>
+          <div>
+            <div>
+              <input type="submit" class="btn" value="Login" id="btnSubmit" />
+            </div>
+            <div class="msg light" *ngIf="status">
+              {{ status.message }}
+            </div>
+          </div>
+          <div class="signup">
+            <h4>Don't have an account?&nbsp;&nbsp;</h4>
+            <a [routerLink]="['signup']">Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

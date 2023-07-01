@@ -1,0 +1,32 @@
+<body>
+  <div class="form-container">
+    <h2>Add</h2>
+    <form [formGroup]="AddForm">
+      <label for="name">Doctor Name:</label>
+      <input
+        type="text"
+        formControlName="doctorName"
+        id="name"
+        name="name"
+        required
+      />
+      <label for="specialization">Specialization:</label>
+      <input
+        type="text"
+        formControlName="specialization"
+        id="specialization"
+        name="specialization"
+        required
+      />
+      <label for="Experience">Experience:</label>
+      <input
+        type="text"
+        formControlName="experience"
+        id="experience"
+        name="experience"
+        required
+      />
+      <button type="submit" (click)="Add()">Submit</button>
+    </form>
+  </div>
+</body>

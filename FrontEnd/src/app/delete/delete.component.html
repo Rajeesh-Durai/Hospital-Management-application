@@ -1,0 +1,17 @@
+<body>
+  <div class="form-container">
+    <h2>Delete</h2>
+    <form>
+      <label for="id">Doctor Id:</label>
+      <input
+        type="number"
+        id="Id"
+        name="Id"
+        [(ngModel)]="id"
+        [ngModelOptions]="{ standalone: true }"
+        required
+      />
+      <button (click)="delbtn()">Delete</button>
+    </form>
+  </div>
+</body>
