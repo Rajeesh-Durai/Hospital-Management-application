@@ -1,0 +1,13 @@
+<div class="options"></div>
+<h2>Appointments</h2>
+<div class="places">
+  <ng-container *ngFor="let pat of patient">
+    <div class="content-1">
+      <img src="../../assets/images/{{ pat.patientName }}.jpg" alt="" />
+      <h3>{{ pat.patientName }}</h3>
+      <h6>{{ pat.age }}</h6>
+      <h6>{{ pat.appointmentDate }}</h6>
+      <h6>{{ pat.appointmentTime }}</h6>
+    </div>
+  </ng-container>
+</div>

@@ -5,8 +5,10 @@ import { AdminComponent } from './admin/admin.component';
 import { DeleteComponent } from './delete/delete.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { OurServiceComponent } from './our-service/our-service.component';
+import { ManageComponent } from './manage/manage.component';
+import { OurDoctorComponent } from './our-doctor/our-doctor.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,11 +19,15 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'login/admin', component: AdminComponent },
-  { path: 'ourservice', component: OurServiceComponent },
+  { path: 'ourdoctor', component: OurDoctorComponent },
   { path: 'add', component: AddComponent },
+  { path: 'manage', component: ManageComponent },
   { path: 'admin/add', component: AddComponent },
   { path: 'delete', component: DeleteComponent },
   { path: 'admin/delete', component: DeleteComponent },
+  { path: 'update', component: UpdateComponent },
+  { path: 'admin/update', component: UpdateComponent },
+  { path: 'login/admin/update', component: UpdateComponent },
 ];
 
 @NgModule({

@@ -30,16 +30,16 @@ export class ApiService {
     return this.http.get('https://localhost:7204/api/Doctor/DoctorDetail');
   }
   //doctor
-  public appointmentDetail(): Observable<any> {
+  public appointmentDetail(name: any): Observable<any> {
     return this.http.get(
-      'https://localhost:7204/api/Appointment/AppointmentDetail'
+      'https://localhost:7204/api/Appointment/AppointmentDetail?name=' + name
     );
   }
-  //Fill Appointment details
-  public appointmentInfo(doclist: any): Observable<any> {
+  //Filled Appointment details
+  public appointmentInfo(list: any): Observable<any> {
     return this.http.post(
-      'https://localhost:7204/api/Doctor/FillAppointmentDetails',
-      doclist
+      'https://localhost:7204/api/Appointment/FillAppointmentDetails',
+      list
     );
   }
   //Add new doctor details
@@ -57,7 +57,7 @@ export class ApiService {
   }
   //update
   public UpdateDoctorInfo(id: number, updatedDetail: any): Observable<any> {
-    let url = 'https://localhost:7204/api/Doctor/UpdateDoctorInfo' + id;
+    let url = 'https://localhost:7204/api/Doctor/UpdateDoctorInfo?id=' + id;
     return this.http.put(url, updatedDetail);
   }
 }

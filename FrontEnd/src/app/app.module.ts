@@ -10,9 +10,11 @@ import { InterceptorService } from './service/interceptor.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
-import { OurServiceComponent } from './our-service/our-service.component';
 import { AddComponent } from './add/add.component';
 import { DeleteComponent } from './delete/delete.component';
+import { OurDoctorComponent } from './our-doctor/our-doctor.component';
+import { ManageComponent } from './manage/manage.component';
+import { UpdateComponent } from './update/update.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DeleteComponent } from './delete/delete.component';
     AdminComponent,
     AddComponent,
     DeleteComponent,
-    OurServiceComponent,
+    OurDoctorComponent,
+    ManageComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

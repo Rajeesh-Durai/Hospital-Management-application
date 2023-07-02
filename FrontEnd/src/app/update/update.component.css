@@ -8,7 +8,7 @@
 }
 body {
   padding-top: 100px;
-  background-image: url("../../assets/images/delete-bg.jpg");
+  background-image: url("../../assets/images/update-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -37,7 +37,10 @@ label {
 }
 
 /* Form input fields */
-input[type="number"] {
+input[type="text"],
+#Id,
+input[type="number"],
+#specialization {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -48,7 +51,7 @@ input[type="number"] {
 
 /* Form submit button */
 button {
-  background-color: rgb(17, 17, 130);
+  background-color: #d1293f;
   color: white;
   margin-top: 20px;
   padding: 12px 20px;
@@ -59,5 +62,5 @@ button {
 
 /* Form submit button hover effect */
 button:hover {
-  background-color: rgb(19, 19, 88);
+  background-color: #920e20;
 }

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width , initial scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section>
+      <div class="bg-img">
+        <h2>Our Doctors</h2>
+      </div>
+    </section>
+    <section class="container-2">
+      <h1>Cardiology</h1>
+      <div class="places">
+        <ng-container *ngFor="let cardio of Cardiology">
+          <div class="content-1">
+            <img src="../../assets/images/{{ cardio.doctorName }}.jpg" alt="" />
+            <h3>Dr. {{ cardio.doctorName }}</h3>
+            <h6>{{ cardio.specialization }}</h6>
+            <h6>Experience: {{ cardio.experience }} years</h6>
+            <button class="buy" (click)="openPopup1(cardio)">
+              Book Appointment
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+    <section class="container-2 container-3">
+      <h1>Endocrinology</h1>
+      <div class="places">
+        <ng-container *ngFor="let endo of Endocrinology">
+          <div class="content-1">
+            <img src="../../assets/images/{{ endo.doctorName }}.jpg" alt="" />
+            <h3>Dr. {{ endo.doctorName }}</h3>
+            <h6>{{ endo.specialization }}</h6>
+            <h6>Experience: {{ endo.experience }} years</h6>
+            <button class="buy" (click)="openPopup2(endo)">
+              Book Appointment
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+    <section class="container-2 container-3">
+      <h1>Orthopedics</h1>
+      <div class="places">
+        <ng-container *ngFor="let ortho of Orthopedics">
+          <div class="content-1">
+            <img src="../../assets/images/{{ ortho.doctorName }}.jpg" alt="" />
+            <h3>Dr. {{ ortho.doctorName }}</h3>
+            <h6>{{ ortho.specialization }}</h6>
+            <h6>Experience: {{ ortho.experience }} years</h6>
+            <button class="buy" (click)="openPopup3(ortho)">
+              Book Appointment
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+    <section class="container-2 container-3">
+      <h1>Neurology</h1>
+      <div class="places">
+        <ng-container *ngFor="let neuro of Neurology">
+          <div class="content-1">
+            <img src="../../assets/images/{{ neuro.doctorName }}.jpg" alt="" />
+            <h3>Dr. {{ neuro.doctorName }}</h3>
+            <h6>{{ neuro.specialization }}</h6>
+            <h6>Experience: {{ neuro.experience }} years</h6>
+            <button class="buy" (click)="openPopup5(neuro)">
+              Book Appointment
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+    <section class="container-2 container-3">
+      <h1>Nephrology</h1>
+      <div class="places">
+        <ng-container *ngFor="let nephro of Nephrology">
+          <div class="content-1">
+            <img src="../../assets/images/{{ nephro.doctorName }}.jpg" alt="" />
+            <h3>Dr. {{ nephro.doctorName }}</h3>
+            <h6>{{ nephro.specialization }}</h6>
+            <h6>Experience: {{ nephro.experience }} years</h6>
+            <button class="buy" (click)="openPopup6(nephro)">
+              Book Appointment
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </section>
+    <div class="dialog-box" id="popup">
+      <i class="fa-solid fa-xmark fa-lg" (click)="closePopup()"></i>
+      <div class="form-wrapper">
+        <div class="form-container">
+          <h2>Appointment Form</h2>
+          <form>
+            <label for="place">Doctor Id:</label>
+            <input
+              type="text"
+              id="id"
+              name="id"
+              [(ngModel)]="list.doctorDetailsId"
+              required
+            />
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              [(ngModel)]="list.patientName"
+              [ngModelOptions]="{ standalone: true }"
+              #name="ngModel"
+              placeholder="Your name.."
+              required
+            />
+            <div>
+              <span *ngIf="name.touched && name.invalid" class="red">
+                <span *ngIf="name.errors?.['required']"
+                  >Please fill your Name</span
+                >
+              </span>
+            </div>
+
+            <label for="name">Age:</label>
+            <input
+              type="number"
+              [(ngModel)]="list.patientAge"
+              [ngModelOptions]="{ standalone: true }"
+              #age="ngModel"
+              placeholder="Your Age.."
+              required
+            />
+            <div>
+              <span *ngIf="age.touched && age.invalid" class="red">
+                <span *ngIf="age.errors?.['required']">shouldn't be Empty</span>
+              </span>
+            </div>
+
+            <label for="checkin">Appointment Date:</label>
+            <input
+              type="date"
+              [(ngModel)]="list.appointmentDate"
+              [ngModelOptions]="{ standalone: true }"
+              required
+            />
+            <label for="checkin">Appointment Time:</label>
+            <select
+              [(ngModel)]="list.appointmentTime"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <option disabled>Select Timing</option>
+              <option>9AM to 10AM</option>
+              <option>10AM to 11AM</option>
+              <option>11AM to 12PM</option>
+              <option>2PM to 3PM</option>
+            </select>
+            <input
+              type="submit"
+              value="Book Appointment"
+              (click)="openPopup4()"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="dialog-box2" id="popup4">
+      <i class="fa-solid fa-xmark fa-lg" (click)="closePopup1()"></i>
+      <h2>Booked Successfully</h2>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+              <li>About us</li>
+              <li>Our Services</li>
+              <li>Privacy policy</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get help</h4>
+            <ul>
+              <li>FAQ</li>
+              <li>Booking status</li>
+              <li>Payment Options</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Follow us</h4>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/profile.php?id=100034832349920&mibextid=ZbWKwL"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/rajarajeesh11?t=n2R00XEa00LJeeZ-V7bqUA&s=09"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+              <a
+                href="https://instagram.com/__twinbros__?igshid=MzNlNGNkZWQ4Mg=="
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

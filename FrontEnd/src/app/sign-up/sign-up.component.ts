@@ -20,7 +20,6 @@ export class SignUpComponent {
   myimg: string = 'assets/images/sign-up.jpg';
   myAvatar: string = 'assets/images/signup-avatar.png';
   pageLogo: string = 'assets/images/project-logo.png';
-  tick: string = 'assets/images/tick.png';
   constructor(
     private signupService: SignupService,
     private fb: FormBuilder,

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { doctorAppointmentDTO } from '../models/doctorAppointmentDTO';
 import { Status } from '../models/status';
 import { AuthService } from '../service/auth.service';
+import { DoctorAppointmentService } from '../service/doctor-appointment.service';
 import { SignupService } from '../service/signup.service';
 
 @Component({
@@ -27,12 +29,16 @@ export class LoginComponent implements OnInit {
     private signupService: SignupService,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private requestService: DoctorAppointmentService
   ) {}
 
   onPost() {
     this.status = { statusCode: 0, message: 'wait....' };
-
+    var request = new doctorAppointmentDTO();
+    request = this.frm.value;
+    console.log(request);
+    this.requestService.addToDTO(request);
     this.signupService.login(this.frm.value).subscribe({
       next: (res) => {
         // save username, accesstoken and refresh token into localStorage

@@ -24,18 +24,20 @@
           <li *ngIf="roles == 'Admin' || 'User' || 'Doctor'">
             <p [routerLink]="['home']" routerLinkActive="active">Home</p>
           </li>
-          <li *ngIf="roles == 'Admin' || 'User' || 'Doctor'">
-            <p [routerLink]="['ourservice']" routerLinkActive="active">
+          <li *ngIf="roles == 'User'">
+            <p [routerLink]="['ourdoctor']" routerLinkActive="active">
               Our Doctors
             </p>
           </li>
           <li *ngIf="roles == 'Doctor'">
-            <p [routerLink]="['experience']" routerLinkActive="active">
-              Manage
+            <p [routerLink]="['manage']" routerLinkActive="active">
+              <i class="fa-sharp fa-solid fa-bell fa-shake"></i>
             </p>
           </li>
           <li *ngIf="roles == 'Admin'">
-            <p routerLink="admin" routerLinkActive="active">Admin</p>
+            <p routerLink="admin" routerLinkActive="active">
+              <i class="fa-solid fa-user"></i>
+            </p>
           </li>
           <li>
             <p (click)="logout()" style="cursor: pointer">Logout</p>

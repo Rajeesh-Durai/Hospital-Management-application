@@ -12,7 +12,7 @@ export class DeleteComponent {
   id!: any;
   constructor(private formBuilder: FormBuilder, private api: ApiService) {}
   delbtn(): void {
-    console.log('hi');
+    console.log(this.id);
     this.api.deleteById(this.id).subscribe((res) => {
       alert('Deleted');
     });

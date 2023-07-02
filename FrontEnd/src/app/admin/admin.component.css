@@ -78,6 +78,7 @@ h5 {
 h2 {
   text-align: center;
   font-size: 38px;
+  padding-top: 50px;
 }
 .options {
   display: flex;

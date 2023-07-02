@@ -33,7 +33,7 @@ export class RequestDoctorDataService {
 
   removeRequestData(doctor: any) {
     this.requestDataList.map((a: any, index: any) => {
-      if (doctor.doctorId === a.doctorId) {
+      if (doctor.username === a.username) {
         this.requestDataList.splice(index, 1);
       }
     });
