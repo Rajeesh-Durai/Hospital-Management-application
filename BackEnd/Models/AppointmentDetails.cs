@@ -12,7 +12,7 @@ namespace BigBangProject.Models
 
 
         [ForeignKey("DoctorDetails")]
-        public int DoctorId { get; set; }
+        public int DoctorDetailsId { get; set; }
         [Required]
         public string PatientName { get; set; }=string.Empty;
         [Required]

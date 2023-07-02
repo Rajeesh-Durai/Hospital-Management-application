@@ -12,15 +12,18 @@ namespace BigBangProject.Repository.AppointmentService
         {
             _context = context;
         }
-        public async Task<List<AppointmentDetails>> GetAppointmentDetails()
+        public async Task<List<AppointmentDetails>> GetAppointmentDetails(string name)
         {
-            var appointmentInfo = await _context.Appointments.ToListAsync();
-            if (appointmentInfo == null)
+            var item = await (from appt in _context.Appointments
+                              join doc in _context.DoctorDetails on appt.DoctorDetailsId equals doc.Id
+                              where doc.DoctorName == name
+                              select appt
+                ).ToListAsync();
+            if (item == null)
             {
-                throw new ArgumentNullException("No info available");
-
+                throw new ArgumentNullException("No Appointment For You");
             }
-            return appointmentInfo;
+            return item;
         }
         public async Task<AppointmentDetails> FillAppointmentDetails(AppointmentDetails appointment)
         {

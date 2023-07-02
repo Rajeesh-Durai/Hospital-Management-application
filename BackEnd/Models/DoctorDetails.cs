@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BigBangProject.Models
 {
@@ -6,7 +7,8 @@ namespace BigBangProject.Models
 
     {
     [Key]
-    public int? Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
     [Required]
     public string DoctorName { get; set; } = string.Empty;
