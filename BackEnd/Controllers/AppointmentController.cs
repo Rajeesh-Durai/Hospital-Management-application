@@ -17,11 +17,11 @@ namespace BigBangProject.Controllers
         }
         [Authorize(Roles ="Doctor")]
         [HttpGet("AppointmentDetail")]
-        public async Task<ActionResult<List<AppointmentDetails>>> GetAppointmentDetails()
+        public async Task<ActionResult<List<AppointmentDetails>>> GetAppointmentDetails(string name)
         {
             try
             {
-                var get = await _context.GetAppointmentDetails();
+                var get = await _context.GetAppointmentDetails(name);
                 return Ok(get);
             }
             catch (ArgumentNullException ex)

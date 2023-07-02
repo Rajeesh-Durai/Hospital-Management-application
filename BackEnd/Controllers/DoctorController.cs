@@ -44,7 +44,7 @@ namespace BigBangProject.Controllers
 
             }
         }
-        [Authorize(Roles = "Doctor")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("UpdateDoctorInfo")]
         public async Task<ActionResult<List<DoctorDetails>>> UpdateDoctorInfo(int id, DoctorDetails doctor)
         {
@@ -84,7 +84,7 @@ namespace BigBangProject.Controllers
                 var details = await _context.cardiology();
                 return Ok(details);
             }
-            catch (ArithmeticException ex)
+            catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
 
@@ -100,7 +100,7 @@ namespace BigBangProject.Controllers
                 var details = await _context.endocrinology();
                 return Ok(details);
             }
-            catch (ArithmeticException ex)
+            catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
 
@@ -116,7 +116,7 @@ namespace BigBangProject.Controllers
                 var details = await _context.neurology();
                 return Ok(details);
             }
-            catch (ArithmeticException ex)
+            catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
 
@@ -133,14 +133,14 @@ namespace BigBangProject.Controllers
                 var details = await _context.nephrology();
                 return Ok(details);
             }
-            catch (ArithmeticException ex)
+            catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
 
             }
 
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User,Doctor")]
         [HttpGet("Orthopedics")]
         public async Task<ActionResult<List<DoctorDetails>>> orthopedics()
         {
@@ -149,7 +149,7 @@ namespace BigBangProject.Controllers
                 var details = await _context.orthopedics();
                 return Ok(details);
             }
-            catch (ArithmeticException ex)
+            catch (ArgumentNullException ex)
             {
                 return NotFound(ex.Message);
 
