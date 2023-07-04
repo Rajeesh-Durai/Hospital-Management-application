@@ -18,9 +18,9 @@
   <ng-container *ngFor="let doc of Doctor">
     <div class="content-1">
       <img src="../../assets/images/{{ doc.doctorName }}.jpg" alt="" />
-      <h3>{{ doc.doctorName }}</h3>
-      <h6>{{ doc.specialization }}</h6>
-      <h6>{{ doc.experience }} years</h6>
+      <h3>Dr.{{ doc.doctorName }}</h3>
+      <h6>specialization: {{ doc.specialization }}</h6>
+      <h6>Experience: {{ doc.experience }} years</h6>
     </div>
   </ng-container>
 </div>
@@ -33,7 +33,9 @@
       <h5>{{ req.email }}</h5>
       <div class="section">
         <button class="btn btn-green" (click)="Add(req)">Accept</button>
-        <button class="btn btn-red" (click)="removeItem(req)">Decline</button>
+        <button class="btn btn-red" (click)="removeItem(req.username)">
+          Decline
+        </button>
       </div>
     </div>
   </ng-container>

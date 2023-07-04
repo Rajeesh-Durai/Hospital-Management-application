@@ -27,7 +27,6 @@ export class SignupService {
       model
     );
   }
-
   chagePassword(model: ChangePasswrd) {
     return this.http.post<Status>(
       `https://localhost:7204/api/Authorization/ChangePassword`,

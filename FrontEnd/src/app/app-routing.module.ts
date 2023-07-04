@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ManageComponent } from './manage/manage.component';
 import { OurDoctorComponent } from './our-doctor/our-doctor.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './service/auth.guard';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UpdateComponent } from './update/update.component';
 
@@ -17,17 +19,64 @@ const routes: Routes = [
   { path: 'signup/login/home', component: HomeComponent },
   { path: 'login/home', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'login/admin', component: AdminComponent },
-  { path: 'ourdoctor', component: OurDoctorComponent },
-  { path: 'add', component: AddComponent },
-  { path: 'manage', component: ManageComponent },
-  { path: 'admin/add', component: AddComponent },
-  { path: 'delete', component: DeleteComponent },
-  { path: 'admin/delete', component: DeleteComponent },
-  { path: 'update', component: UpdateComponent },
-  { path: 'admin/update', component: UpdateComponent },
-  { path: 'login/admin/update', component: UpdateComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'ourdoctor',
+    component: OurDoctorComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Doctor'] },
+  },
+  {
+    path: 'add',
+    component: AddComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'manage',
+    component: ManageComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Doctor'] },
+  },
+  {
+    path: 'admin/add',
+    component: AddComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'delete',
+    component: DeleteComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'admin/delete',
+    component: DeleteComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'update',
+    component: UpdateComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
+  {
+    path: 'admin/update',
+    component: UpdateComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin'] },
+  },
 ];
 
 @NgModule({

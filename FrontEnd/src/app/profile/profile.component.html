@@ -1,0 +1,122 @@
+<head>
+  <meta name="viewport" content="width=device-width , initial scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<div class="main">
+  <div class="profile">
+    <div class="content">
+      <div>
+        <h2>My Profile</h2>
+      </div>
+      <div class="dp">
+        <img src="../../assets/images/{{ userList.doctorName }}.jpg" alt="dp" />
+      </div>
+      <div class="form">
+        <div class="name">
+          <label for="name" class="doc">Doctor Name:</label>
+          <input
+            type="text"
+            value="{{ userList.doctorName }}"
+            id="name"
+            name="name"
+            disabled
+          />
+        </div>
+        <div class="specialization">
+          <label for="specialization" class="spec">Specialization:</label>
+          <input
+            type="text"
+            value="{{ userList.specialization }}"
+            id="specialization"
+            name="specialization"
+            disabled
+          />
+        </div>
+        <div class="experience">
+          <label for="Experience" class="exp">Experience:</label>
+          <input
+            type="text"
+            value="{{ userList.experience }}"
+            id="experience"
+            name="experience"
+            disabled
+          />
+        </div>
+        <div><button (click)="openPopup6()">Edit</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-box" id="popup">
+    <i class="fa-solid fa-xmark fa-lg" (click)="closePopup()"></i>
+    <div class="form-wrapper">
+      <div class="form-container">
+        <h2>Update Profile</h2>
+        <form>
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            [(ngModel)]="List.doctorName"
+            [ngModelOptions]="{ standalone: true }"
+            #name="ngModel"
+            placeholder="Your name.."
+            class="list"
+            required
+          />
+          <div>
+            <span *ngIf="name.touched && name.invalid" class="red">
+              <span *ngIf="name.errors?.['required']"
+                >Please fill your Name</span
+              >
+            </span>
+          </div>
+
+          <label for="name">Specialization:</label>
+          <input
+            type="text"
+            id="specialization"
+            name="specialization"
+            [(ngModel)]="List.specialization"
+            [ngModelOptions]="{ standalone: true }"
+            #age="ngModel"
+            placeholder="Enter your Specialization"
+            required
+          />
+          <div>
+            <span *ngIf="age.touched && age.invalid" class="red">
+              <span *ngIf="age.errors?.['required']">shouldn't be Empty</span>
+            </span>
+          </div>
+
+          <label for="checkin">Experience:</label>
+          <input
+            type="number"
+            id="experience"
+            name="experience"
+            [(ngModel)]="List.experience"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Enter your Experience"
+            required
+          />
+          <div class="update">
+            <input type="submit" value="Update" (click)="openPopup4()" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-box2" id="popup4">
+    <i class="fa-solid fa-xmark fa-lg" (click)="closePopup1()"></i>
+    <h2>Updated Successfully</h2>
+  </div>
+</div>

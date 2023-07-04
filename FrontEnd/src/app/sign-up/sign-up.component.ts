@@ -9,6 +9,7 @@ import { MustMatch } from '../helpers/must-watch.validator';
 import { validPattern } from '../helpers/pattern-watch.validator';
 import { RequestDataDTO } from '../models/requestDoctorDataDTO';
 import { Status } from '../models/status';
+import { ApiService } from '../service/api.service';
 import { RequestDoctorDataService } from '../service/request-doctor-data.service';
 import { SignupService } from '../service/signup.service';
 @Component({
@@ -23,7 +24,8 @@ export class SignUpComponent {
   constructor(
     private signupService: SignupService,
     private fb: FormBuilder,
-    private requestService: RequestDoctorDataService
+    private requestService: RequestDoctorDataService,
+    private api: ApiService
   ) {}
 
   frm!: FormGroup;
@@ -37,6 +39,9 @@ export class SignUpComponent {
   onPost() {
     if (this.roleName === 'Doctor') {
       this.messageout = 'Access need to be given by Admin';
+      this.api.DoctorProfile(this.frm.value).subscribe((result) => {
+        console.log(this.frm.value);
+      });
       var request = new RequestDataDTO();
       request = this.frm.value;
       this.requestService.addToRequest(request);

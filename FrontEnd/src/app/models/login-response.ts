@@ -6,4 +6,5 @@ export interface LoginResponseModel extends Status {
   expiration: string;
   name: string;
   username: string;
+  roles: string;
 }

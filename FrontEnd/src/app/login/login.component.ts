@@ -35,20 +35,22 @@ export class LoginComponent implements OnInit {
 
   onPost() {
     this.status = { statusCode: 0, message: 'wait....' };
-    var request = new doctorAppointmentDTO();
-    request = this.frm.value;
-    console.log(request);
-    this.requestService.addToDTO(request);
+
     this.signupService.login(this.frm.value).subscribe({
       next: (res) => {
         // save username, accesstoken and refresh token into localStorage
-        this.authService.addAccessToken(res.token);
-        this.authService.addRefreshToken(res.refreshToken);
-        this.authService.addUsername(res.username);
+        //Setting the object properties into the localStorage for the further operation
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('role', res.roles);
+        localStorage.setItem('name', res.username);
         this.status.statusCode = res.statusCode;
         this.status.message = res.message;
         if (res.statusCode == 1) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']).then(() => {
+            // Optional: Scroll to the top of the page
+            window.scrollTo(0, 0);
+            location.reload();
+          });
         }
       },
       error: (err) => {
@@ -57,6 +59,10 @@ export class LoginComponent implements OnInit {
         this.status.message = 'some error on server side';
       },
     });
+    var request = new doctorAppointmentDTO();
+    request = this.frm.value;
+    console.log(request);
+    this.requestService.addToDTO(request);
   }
 
   ngOnInit(): void {
@@ -64,10 +70,6 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-    if (this.authService.isLoggedIn()) {
-      console.log('Entered');
-      this.router.navigate(['/admin']);
-    }
   }
 }
 function calculateFaceMove(e: any) {

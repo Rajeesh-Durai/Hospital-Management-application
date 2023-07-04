@@ -122,6 +122,7 @@ form h2 {
   align-items: center;
   justify-content: center;
 }
+
 @media screen and(max-width:1050px) {
   .container {
     grid-gap: 5rem;

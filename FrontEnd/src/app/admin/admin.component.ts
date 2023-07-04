@@ -22,29 +22,28 @@ export class AdminComponent {
   ) {}
 
   ngOnInit(): void {
-    this.reqService.getDetail().subscribe((res) => {
+    this.apiService.DisplayDoctorProfile().subscribe((res) => {
       this.requestDataList = res;
     });
     this.AllDetailfn();
   }
-  //add to user table
-  Add(doctor: any): void {
-    this.api.signup(doctor).subscribe((res) => {
-      console.log(res);
+  //add to Register table and deleting it in profile table
+  Add(user: any): void {
+    this.api.signup(user).subscribe({
+      next: (res) => {
+        console.log(user);
+      },
     });
-    this.removeItem(doctor);
+    this.removeItem(user.username);
   }
   //remove single item
-  removeItem(doctor: any) {
-    this.reqService.removeRequestData(doctor);
+  removeItem(user: any) {
+    this.apiService.deleteByName(user).subscribe((res) => {
+      console.log('Deleted');
+    });
+    window.location.reload();
   }
-  roles = '';
-  isLoggedIn!: boolean;
 
-  checkLoggedInUser() {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.roles = this.authService.getUserRole();
-  }
   //api part
   //To display all the data from the database
   public Doctor: any;
@@ -54,8 +53,5 @@ export class AdminComponent {
       this.Doctor = result;
       console.log('done');
     });
-  }
-  logout() {
-    this.authService.logout();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-home',
@@ -48,94 +49,41 @@ export class HomeComponent implements OnInit {
       this.showContent(this.currentIndex);
     }
   }
+
   ngOnInit(): void {
     this.showContent(this.currentIndex);
-    document.addEventListener('DOMContentLoaded', function () {
-      var content1 = document.querySelector('.content-1');
-      var content2 = document.querySelector('.content-2');
-      var content4 = document.querySelector('.content-4');
-      var review = document.querySelector('.review');
-      var reviewhead = document.querySelector('.review-head');
-      var reviewcon = document.querySelector('.review-con');
-      var side = document.querySelector('.side');
-      var detail = document.querySelector('.detail');
-      var content3 = document.querySelector('.con-3');
-      function isElementInView(el: any) {
-        var rect = el.getBoundingClientRect();
-        return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <=
-            (window.innerWidth || document.documentElement.clientWidth)
-        );
-      }
+    const content1 = document.querySelector('.content-1');
+    const content2 = document.querySelector('.content-2');
+    const review = document.querySelector('.review');
+    const reviewhead = document.querySelector('.review-head');
+    const reviewcon = document.querySelector('.review-con');
+    const side = document.querySelector('.side');
+    const detail = document.querySelector('.detail');
+    const content3 = document.querySelector('.con-3');
+    function handleIntersection(entries: IntersectionObserverEntry[]) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          target?.classList.add('show');
+          observer.unobserve(target);
+        }
+      });
+    }
 
-      const handleScroll1 = () => {
-        if (isElementInView(content1)) {
-          content1?.classList.add('show');
-        }
-      };
-      const handleScroll2 = () => {
-        if (isElementInView(content2)) {
-          content2?.classList.add('show');
-        }
-      };
-      const handleScroll3 = () => {
-        if (isElementInView(content4)) {
-          content4?.classList.add('show');
-        }
-      };
-      const handleScroll4 = () => {
-        if (isElementInView(review)) {
-          review?.classList.add('show');
-        }
-      };
-      const handleScroll5 = () => {
-        if (isElementInView(reviewcon)) {
-          reviewcon?.classList.add('show');
-        }
-      };
-      const handleScroll6 = () => {
-        if (isElementInView(reviewhead)) {
-          reviewhead?.classList.add('show');
-        }
-      };
-      const handleScroll7 = () => {
-        if (isElementInView(detail)) {
-          detail?.classList.add('show');
-        }
-      };
-      const handleScroll8 = () => {
-        if (isElementInView(side)) {
-          side?.classList.add('show');
-        }
-      };
-      const handleScroll9 = () => {
-        if (isElementInView(content3)) {
-          content3?.classList.add('show');
-        }
-      };
-      window.addEventListener('scroll', handleScroll1);
-      window.addEventListener('scroll', handleScroll2);
-      window.addEventListener('scroll', handleScroll3);
-      window.addEventListener('scroll', handleScroll4);
-      window.addEventListener('scroll', handleScroll5);
-      window.addEventListener('scroll', handleScroll6);
-      window.addEventListener('scroll', handleScroll7);
-      window.addEventListener('scroll', handleScroll8);
-      window.addEventListener('scroll', handleScroll9);
+    const options = {
+      threshold: 0.2, // Adjust this threshold value as needed
+    };
 
-      handleScroll1(); // Check initial state
-      handleScroll2();
-      handleScroll3();
-      handleScroll4();
-      handleScroll5();
-      handleScroll6();
-      handleScroll7();
-      handleScroll8();
-      handleScroll9();
-    });
+    const observer = new IntersectionObserver(handleIntersection, options);
+
+    // Observe the target elements if they are not null
+    content1 && observer.observe(content1);
+    content2 && observer.observe(content2);
+    review && observer.observe(review);
+    reviewhead && observer.observe(reviewhead);
+    reviewcon && observer.observe(reviewcon);
+    side && observer.observe(side);
+    detail && observer.observe(detail);
+    content3 && observer.observe(content3);
   }
 }

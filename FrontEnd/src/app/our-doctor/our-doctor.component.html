@@ -22,7 +22,7 @@
       </div>
     </section>
     <section class="container-2">
-      <h1>Cardiology</h1>
+      <h1>Cardiology Specialists</h1>
       <div class="places">
         <ng-container *ngFor="let cardio of Cardiology">
           <div class="content-1">
@@ -38,7 +38,7 @@
       </div>
     </section>
     <section class="container-2 container-3">
-      <h1>Endocrinology</h1>
+      <h1>Endocrinology Specialists</h1>
       <div class="places">
         <ng-container *ngFor="let endo of Endocrinology">
           <div class="content-1">
@@ -54,7 +54,7 @@
       </div>
     </section>
     <section class="container-2 container-3">
-      <h1>Orthopedics</h1>
+      <h1>Orthopedics Specialists</h1>
       <div class="places">
         <ng-container *ngFor="let ortho of Orthopedics">
           <div class="content-1">
@@ -70,7 +70,7 @@
       </div>
     </section>
     <section class="container-2 container-3">
-      <h1>Neurology</h1>
+      <h1>Neurology Specialists</h1>
       <div class="places">
         <ng-container *ngFor="let neuro of Neurology">
           <div class="content-1">
@@ -86,7 +86,7 @@
       </div>
     </section>
     <section class="container-2 container-3">
-      <h1>Nephrology</h1>
+      <h1>Nephrology Specialists</h1>
       <div class="places">
         <ng-container *ngFor="let nephro of Nephrology">
           <div class="content-1">
@@ -113,7 +113,7 @@
               id="id"
               name="id"
               [(ngModel)]="list.doctorDetailsId"
-              required
+              disabled
             />
             <label for="name">Name:</label>
             <input

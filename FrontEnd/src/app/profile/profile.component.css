@@ -1,0 +1,224 @@
+.profile {
+  background-image: url("../../assets/images/bg-img.jpg");
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.dp img {
+  width: 120px;
+  height: 120px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 182px;
+}
+.form {
+  line-height: 5.2rem;
+  padding-right: 50px;
+  padding-top: 10px;
+}
+input,
+.list {
+  width: 450px;
+  height: 4vh;
+  border: transparent;
+  border-bottom: 3px solid;
+  background-color: rgb(190, 219, 197);
+}
+label {
+  font-size: 18px;
+  font-weight: 600;
+}
+.exp {
+  padding-right: 36px;
+}
+.doc {
+  padding-right: 14px;
+}
+.spec {
+  padding-right: 10px;
+}
+.name,
+.experience,
+.specialization {
+  transform: 4.4s;
+}
+.name:hover,
+.experience:hover,
+.specialization:hover {
+  transform: scale(1.08);
+}
+.dialog-box2 {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: fixed;
+  z-index: 200;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333;
+  box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+.open1 {
+  top: 50%;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: #f9f9f9;
+}
+button {
+  background-color: #2b3a51;
+  color: white;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dialog-box2 i {
+  padding-top: 20px;
+  float: right;
+}
+.dialog-box2 img {
+  width: 55px;
+  margin-top: -50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.dialog-box2 h2 {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 30px 0 10px;
+}
+.dialog-box {
+  width: 500px;
+  height: 70vh;
+  background-color: #fffffff2;
+  border-radius: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #1c0522;
+  position: fixed;
+  box-shadow: 2px 6px 8px rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+.open {
+  top: 50%;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.dialog-box i {
+  padding-top: 20px;
+  float: right;
+}
+.dialog-box h2 {
+  padding-top: 20px;
+  color: #1c0522;
+}
+.dialog-box label {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 30px 0 10px;
+  float: left;
+}
+
+/* Form input fields */
+input[type="text"],
+#experience {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.update {
+  padding-top: 80px;
+}
+/* Form submit button */
+input[type="submit"] {
+  background-color: #1c0522;
+  color: white;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.6s;
+  text-align: center;
+}
+
+/* Form submit button hover effect */
+input[type="submit"]:hover {
+  background-color: #1f2d5e;
+  color: white;
+}
+
+/* Form wrapper styles */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 1030px) {
+  .content {
+    padding-top: 115px;
+  }
+}
+@media screen and (max-width: 912px) {
+  .content {
+    padding-top: 422px;
+  }
+}
+@media screen and (max-width: 820px) {
+  .content {
+    padding-top: 332px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content {
+    padding-top: 272px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .content {
+    padding-top: 172px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .content {
+    padding-top: 208px;
+  }
+}
+@media screen and (max-width: 412px) {
+  .content {
+    padding-top: 222px;
+  }
+}
+@media screen and (max-width: 390px) {
+  .content {
+    padding-top: 152px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .content {
+    padding-top: 132px;
+  }
+}

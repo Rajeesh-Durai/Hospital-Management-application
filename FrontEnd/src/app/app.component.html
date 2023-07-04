@@ -19,28 +19,35 @@
         <img [src]="projLogo" alt="logo" />
       </div>
       <input type="checkbox" id="nav-check" hidden />
-      <nav *ngIf="isLoggedIn">
+      <nav>
         <ul>
-          <li *ngIf="roles == 'Admin' || 'User' || 'Doctor'">
+          <li *ngIf="role === 'Admin' || role === 'User' || role === 'Doctor'">
             <p [routerLink]="['home']" routerLinkActive="active">Home</p>
           </li>
-          <li *ngIf="roles == 'User'">
+          <li *ngIf="role === 'User'">
             <p [routerLink]="['ourdoctor']" routerLinkActive="active">
               Our Doctors
             </p>
           </li>
-          <li *ngIf="roles == 'Doctor'">
+          <li *ngIf="role === 'Doctor'">
             <p [routerLink]="['manage']" routerLinkActive="active">
-              <i class="fa-sharp fa-solid fa-bell fa-shake"></i>
+              Appointments
             </p>
           </li>
-          <li *ngIf="roles == 'Admin'">
-            <p routerLink="admin" routerLinkActive="active">
-              <i class="fa-solid fa-user"></i>
-            </p>
+          <li *ngIf="role === 'Admin'">
+            <p routerLink="admin" routerLinkActive="active">Admin</p>
+          </li>
+          <li *ngIf="role === 'Doctor'">
+            <p routerLink="profile" routerLinkActive="active">My Profile</p>
           </li>
           <li>
-            <p (click)="logout()" style="cursor: pointer">Logout</p>
+            <p
+              (click)="logout()"
+              style="cursor: pointer"
+              *ngIf="role === 'Admin' || role === 'User' || role === 'Doctor'"
+            >
+              Logout
+            </p>
           </li>
         </ul>
       </nav>
@@ -51,5 +58,5 @@
       </label>
     </div>
   </header>
-  <router-outlet (activate)="checkLoggedInUser()"></router-outlet>
+  <router-outlet></router-outlet>
 </body>

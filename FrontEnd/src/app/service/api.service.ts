@@ -35,6 +35,11 @@ export class ApiService {
       'https://localhost:7204/api/Appointment/AppointmentDetail?name=' + name
     );
   }
+  public DoctorDetailByName(name: any): Observable<any> {
+    return this.http.get(
+      'https://localhost:7204/api/Doctor/DoctorDetailByName?name=' + name
+    );
+  }
   //Filled Appointment details
   public appointmentInfo(list: any): Observable<any> {
     return this.http.post(
@@ -49,15 +54,38 @@ export class ApiService {
       doclist
     );
   }
+  //Add new doctor profile
+  public DoctorProfile(doclist: any): Observable<any> {
+    return this.http.post(
+      'https://localhost:7204/api/DoctorProfile/NewDoctorInfo',
+      doclist
+    );
+  }
+  public DisplayDoctorProfile(): Observable<any> {
+    return this.http.get(
+      'https://localhost:7204/api/DoctorProfile/DoctorProfile'
+    );
+  }
   //del by id
   public deleteById(id: number): Observable<any> {
     return this.http.delete(
       'https://localhost:7204/api/Doctor/DeleteDoctorInfo?id=' + id
     );
   }
+  //delete by name
+  public deleteByName(id: any): Observable<any> {
+    return this.http.delete(
+      'https://localhost:7204/api/DoctorProfile/DeleteDoctorProfile?id=' + id
+    );
+  }
   //update
   public UpdateDoctorInfo(id: number, updatedDetail: any): Observable<any> {
     let url = 'https://localhost:7204/api/Doctor/UpdateDoctorInfo?id=' + id;
+    return this.http.put(url, updatedDetail);
+  }
+  public UpdateDoctorProfileInfo(id: any, updatedDetail: any): Observable<any> {
+    let url =
+      'https://localhost:7204/api/Doctor/UpdateDoctorProfileInfo?id=' + id;
     return this.http.put(url, updatedDetail);
   }
 }

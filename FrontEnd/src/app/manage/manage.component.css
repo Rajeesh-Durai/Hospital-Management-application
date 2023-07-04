@@ -58,3 +58,41 @@ h6 {
   color: #359381;
   margin: 0;
 }
+@media screen and (max-width: 1000px) {
+  .content-1 {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 820px) {
+  .options {
+    flex-wrap: wrap;
+    height: 500px;
+  }
+}
+@media screen and (max-width: 770px) {
+  .options {
+    flex-wrap: wrap;
+    height: 500px;
+  }
+  .content-1 {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 540px) {
+  .options {
+    flex-wrap: wrap;
+    height: 300px;
+  }
+  .content-1 {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 420px) {
+  .options {
+    flex-wrap: wrap;
+    height: 250px;
+  }
+  .content-1 {
+    width: 70%;
+  }
+}
