@@ -28,6 +28,20 @@ namespace BigBangProject.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [Authorize(Roles ="Doctor")]
+        [HttpGet("DoctorDetailByName")]
+        public async Task<ActionResult<DoctorDetails>> doctorDetailByName(string name)
+        {
+            try
+            {
+                var get = await _context.doctorDetailByName(name);
+                return Ok(get);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
         [Authorize(Roles ="Admin")]
         [HttpPost("NewDoctorInfo")]
@@ -59,9 +73,24 @@ namespace BigBangProject.Controllers
 
             }
         }
+        [Authorize(Roles = "Doctor")]
+        [HttpPut("UpdateDoctorProfileInfo")]
+        public async Task<ActionResult<List<DoctorDetails>>> UpdateDoctorProfileInfo(string id, DoctorDetails doctor)
+        {
+            try
+            {
+                var update = await _context.UpdateDoctorProfileInfo(id, doctor);
+                return Ok(update);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex.Message);
+
+            }
+        }
         [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteDoctorInfo")]
-        public async Task<ActionResult<string>> DeleteDoctorInfo(int id)
+        public async Task<ActionResult<DoctorDetails>> DeleteDoctorInfo(int id)
         {
             try
             {

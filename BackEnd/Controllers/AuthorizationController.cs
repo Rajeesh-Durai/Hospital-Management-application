@@ -121,6 +121,7 @@ namespace BigBangProject.Controllers
                 {
                     Name = user.Name,
                     Username = user.UserName,
+                    Roles=user.Roles,
                     Token = token.TokenString,
                     RefreshToken = refreshToken,
                     Expiration = token.ValidTo,

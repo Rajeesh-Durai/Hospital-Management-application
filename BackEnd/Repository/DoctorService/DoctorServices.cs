@@ -21,6 +21,16 @@ namespace BigBangProject.Repository.DoctorService
             }
             return doctorInfo;
         }
+        public async Task<DoctorDetails> doctorDetailByName(string name)
+        {
+            var doctorInfo =  _context.DoctorDetails.FirstOrDefault(x=>x.DoctorName==name);
+            if (doctorInfo == null)
+            {
+                throw new ArgumentNullException("No info available");
+
+            }
+            return  doctorInfo;
+        }
         public async Task<DoctorDetails> NewDoctorInfo(DoctorDetails doctor)
         {
             await _context.DoctorDetails.AddAsync(doctor);
@@ -40,7 +50,20 @@ namespace BigBangProject.Repository.DoctorService
             await _context.SaveChangesAsync();
             return await _context.DoctorDetails.ToListAsync();
         }
-        public async Task<string> DeleteDoctorInfo(int id)
+        public async Task<List<DoctorDetails>> UpdateDoctorProfileInfo(string id, DoctorDetails doctor)
+        {
+            var update = _context.DoctorDetails.FirstOrDefault(x=>x.DoctorName==id);
+            if (update == null)
+            {
+                throw new ArithmeticException("Not available");
+            }
+            update.DoctorName = doctor.DoctorName;
+            update.Specialization = doctor.Specialization;
+            update.Experience = doctor.Experience;
+            await _context.SaveChangesAsync();
+            return await _context.DoctorDetails.ToListAsync();
+        }
+        public async Task<DoctorDetails> DeleteDoctorInfo(int id)
         {
             var delete = await _context.DoctorDetails.FindAsync(id);
             if (delete == null)
@@ -49,7 +72,7 @@ namespace BigBangProject.Repository.DoctorService
             }
             _context.DoctorDetails.Remove(delete);
             await _context.SaveChangesAsync();
-            return "Deleted Successfully";
+            return delete;
         }
         public async Task<List<DoctorDetails>> cardiology()
         {
